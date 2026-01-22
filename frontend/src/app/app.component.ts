@@ -1,22 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { environment } from '../environments/environment';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <div>
-      <h1>Test Configuration</h1>
-      <p>Production: {{ isProduction }}</p>
-      <p>API URL: {{ apiUrl }}</p>
-    </div>
-  `
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  isProduction = environment.production;
-  apiUrl = environment.apiUrl;
-  
-  ngOnInit() {
-    console.log('Environment:', environment);
-    console.log('API URL:', this.apiUrl);
-  }
+export class AppComponent {
+  title = 'frontend';
 }

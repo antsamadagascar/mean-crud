@@ -1,21 +1,21 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 
-require('dotenv').config();
 const app = express();
-const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors());
+// ✅ Autoriser CORS
+app.use(cors({
+  origin: 'http://localhost:4200', // Angular
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 
-// Connexion à MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log(" MongoDB connecté"))
-  .catch(err => console.log(" Erreur MongoDB:", err));
+// Routes
+const articleRoutes = require('./routes/articles');
+app.use('/articles', articleRoutes);
 
-//Routes 
-app.use('/articles', require('./routes/articleRoutes'));
-app.listen(PORT, () => console.log(`Serveur démarré sur le port
-${PORT}`));
+app.listen(5000, () => {
+  console.log('Serveur démarré sur http://localhost:5000');
+});

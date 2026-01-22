@@ -20,3 +20,45 @@ Application simple de gestion d'articles avec le stack MEAN (MongoDB, Express, A
 - MongoDB v8+
 
 ---
+
+## Installation rapide
+
+### 1. Cloner le projet
+
+```bash
+git clone https://github.com/antsamadagascar/mean-crud.git
+cd mean-crud
+```
+
+### 2. Backend
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+### 3. Frontend
+
+```bash
+cd frontend
+npm install
+ng serve --open
+```
+
+### 4. MongoDB
+
+```bash
+# Lancer MongoDB
+mongod --dbpath /var/lib/mongodb
+```
+
+---
+
+##  URLs de l'application
+
+- **Frontend** : http://localhost:4200
+- **Backend** : http://localhost:5000
+
+---
+

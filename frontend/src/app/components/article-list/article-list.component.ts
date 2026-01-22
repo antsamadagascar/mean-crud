@@ -11,15 +11,24 @@ import { ArticleService } from '../../services/article.service';
   styleUrl: './article-list.component.css'
 })
 export class ArticleListComponent implements OnInit {
+
   articles: any[] = [];
+
   newArticle = { 
     title: '', 
     content: '', 
     category: 'Actualités' 
   };
 
-  // Liste des catégories disponibles
   categories = ['Actualités', 'Sport', 'Divertissement', 'Technologie', 'Santé'];
+
+  editingArticleId: string | null = null;
+
+  editArticle = {
+    title: '',
+    content: '',
+    category: 'Actualités'
+  };
 
   constructor(private articleService: ArticleService) {}
 
@@ -50,7 +59,38 @@ export class ArticleListComponent implements OnInit {
     }
   }
 
-  // Méthode pour obtenir la classe CSS selon la catégorie
+  //  PASSER EN MODE ÉDITION
+  startEdit(article: any): void {
+    this.editingArticleId = article._id;
+    this.editArticle = {
+      title: article.title,
+      content: article.content,
+      category: article.category
+    };
+  }
+
+  //  ENREGISTRER LA MODIFICATION
+  updateArticle(): void {
+    if (!this.editingArticleId) return;
+
+    this.articleService
+      .updateArticle(this.editingArticleId, this.editArticle)
+      .subscribe(() => {
+        this.loadArticles();
+        this.cancelEdit();
+      });
+  }
+
+  //  ANNULER L’ÉDITION
+  cancelEdit(): void {
+    this.editingArticleId = null;
+    this.editArticle = {
+      title: '',
+      content: '',
+      category: 'Actualités'
+    };
+  }
+
   getCategoryClass(category: string): string {
     const categoryMap: { [key: string]: string } = {
       'Actualités': 'category-actualites',

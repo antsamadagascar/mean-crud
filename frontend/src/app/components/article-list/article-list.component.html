@@ -71,27 +71,85 @@
         *ngFor="let article of articles"
         [ngClass]="getCategoryClass(article.category)"
       >
-        <div class="article-category-badge">
-          {{ article.category }}
+
+        <!-- MODE AFFICHAGE -->
+        <div *ngIf="editingArticleId !== article._id">
+
+          <div class="article-category-badge">
+            {{ article.category }}
+          </div>
+
+          <h3 class="article-title">{{ article.title }}</h3>
+
+          <p class="article-content">{{ article.content }}</p>
+
+          <div class="article-footer">
+            <span class="article-date">
+              {{ article.createdAt | date: 'dd/MM/yyyy à HH:mm' }}
+            </span>
+
+            <div class="article-actions">
+              <button 
+                (click)="startEdit(article)" 
+                class="btn-edit"
+                title="Modifier"
+              >
+                Modifier
+              </button>
+
+              <button 
+                (click)="deleteArticle(article._id)" 
+                class="btn-delete"
+                title="Supprimer"
+              >
+                Supprimer
+              </button>
+            </div>
+          </div>
+
         </div>
-        
-        <h3 class="article-title">{{ article.title }}</h3>
-        
-        <p class="article-content">{{ article.content }}</p>
-        
-        <div class="article-footer">
-          <span class="article-date">
-             {{ article.createdAt | date: 'dd/MM/yyyy à HH:mm' }}
-          </span>
-          <button 
-            (click)="deleteArticle(article._id)" 
-            class="btn-delete"
-            title="Supprimer cet article"
-          >
-             Supprimer
-          </button>
+
+        <!--  MODE ÉDITION -->
+        <div *ngIf="editingArticleId === article._id" class="edit-form">
+
+          <input
+            type="text"
+            [(ngModel)]="editArticle.title"
+            placeholder="Titre de l'article"
+          />
+
+          <select [(ngModel)]="editArticle.category">
+            <option *ngFor="let cat of categories" [value]="cat">
+              {{ cat }}
+            </option>
+          </select>
+
+          <textarea
+            [(ngModel)]="editArticle.content"
+            rows="4"
+            placeholder="Contenu de l'article"
+          ></textarea>
+
+          <div class="edit-actions">
+            <button 
+              (click)="updateArticle()" 
+              class="btn-save"
+            >
+              Enregistrer
+            </button>
+
+            <button 
+              (click)="cancelEdit()" 
+              class="btn-cancel"
+            >
+              Annuler
+            </button>
+          </div>
+
         </div>
+
       </div>
+
     </div>
   </div>
 </div>

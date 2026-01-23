@@ -1,6 +1,6 @@
 # Application MEAN - CRUD Articles
 
-Application simple de gestion d'articles avec le stack MEAN (MongoDB, Express, Angular, Node.js).
+Application simple de gestion d'articles  simuler avec le stack MEAN (MongoDB, Express, Angular, Node.js).
 
 ---
 

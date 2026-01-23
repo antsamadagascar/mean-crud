@@ -13,7 +13,7 @@ Application simple de gestion d'articles avec le stack MEAN (MongoDB, Express, A
 
 ---
 
-## Prérequis
+## Prérequis ( Linux ubuntu 24.4)
 
 - Node.js v20+
 - Angular CLI v17+

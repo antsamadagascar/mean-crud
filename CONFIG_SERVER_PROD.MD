@@ -305,5 +305,7 @@ git push origin main
 
 ---
 
-**Date de création :** Janvier 2026  
+**Date de création :** 23 Janvier 2026  
 **Stack :** MongoDB Atlas + Express.js + Angular 19 + Node.js sur Render
+
+                                                 By RATOVONANDRASANA Aina Ny Antsa

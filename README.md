@@ -55,10 +55,15 @@ mongod --dbpath /var/lib/mongodb
 
 ---
 
-##  URLs de l'application
+##  URLs de l'application local
 
 - **Frontend** : http://localhost:4200
 - **Backend** : http://localhost:5000
+
+##  URLs de l'application sur server prod
+
+- **Frontend** : https://mean-crud-frontend.onrender.com
+- **Backend** :  https://mean-crud-backend-26qf.onrender.com/
 
 ---
 
